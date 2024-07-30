@@ -4,6 +4,8 @@ import { Inter as FontSans } from "next/font/google";
 import { cn } from "@/lib/utils";
 import { ThemeProvider } from "@/components/theme-provider";
 import { ModeToggle } from "@/components/mode-toggle";
+import { SignIn } from "@/components/sign-in";
+import UserAvatar from "@/components/user-avatar";
 
 const fontSans = FontSans({
     subsets: ["latin"],
@@ -34,7 +36,8 @@ export default function RootLayout({
                     enableSystem
                     disableTransitionOnChange
                 >
-                    <header className="fixed top-0 w-full p-2">
+                    <header className="fixed top-0 w-full p-2 flex gap-2 items-center justify-between">
+                        <UserAvatar />
                         <ModeToggle />
                     </header>
                     {children}
