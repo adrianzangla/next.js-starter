@@ -2,6 +2,8 @@ import "@/styles/globals.css";
 import type { Metadata } from "next";
 import { Inter as FontSans } from "next/font/google";
 import { cn } from "@/lib/utils";
+import { ThemeProvider } from "@/components/theme-provider";
+import { ModeToggle } from "@/components/mode-toggle";
 
 const fontSans = FontSans({
     subsets: ["latin"],
@@ -26,7 +28,17 @@ export default function RootLayout({
                     fontSans.variable
                 )}
             >
-                {children}
+                <ThemeProvider
+                    attribute="class"
+                    defaultTheme="system"
+                    enableSystem
+                    disableTransitionOnChange
+                >
+                    <header className="fixed top-0 w-full p-2">
+                        <ModeToggle />
+                    </header>
+                    {children}
+                </ThemeProvider>
             </body>
         </html>
     );
